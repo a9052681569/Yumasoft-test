@@ -1,0 +1,12 @@
+<form [formGroup]="myForm" (ngSubmit)='onSubmit()' novalidate>
+    <div class="input-group justify-content-center">
+        <textarea aria-describedby="button" type="text" class="col-6" formControlName='val'></textarea>
+        <div class="input-group-append"> 
+            <button id="button" class="btn btn-primary" [disabled]='myForm.invalid' type="submit">{{ btnText }}</button>
+        </div>
+    </div>
+    <div *ngIf="_val.invalid && (_val.touched || _val.dirty)">
+        <span *ngIf="_val.errors?.required">Обязательное поле</span>
+        <span *ngIf="_val.errors?.pattern">Пожалуйста введите массив правильных JSON объектов</span>
+    </div> 
+</form>
